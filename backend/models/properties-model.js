@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-
+require('dotenv').config();
 mongoose
-  .connect("mongodb://localhost:27017/realEstate")
+  .connect(process.env.MONGO_URI)
   .then(async () => {
     console.log("Database connected!");
   })
