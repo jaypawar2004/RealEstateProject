@@ -71,17 +71,17 @@ function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="w-full relative lg:h-[60vh] lg:mt-[0vw] sm:h-[100vh] mt-[20vw]">
+      <div className="w-full h-[70vh] relative lg:h-[70vh] lg:mt-[0vw] sm:h-[100vh]">
         <video
           loop
           autoPlay
           muted
-          className="relative z-0 w-full h-[50vh] sm:h-full object-cover object-center"
+          className="relative z-0 w-full h-[70vh] sm:h-full object-cover object-center"
           src="/excel-properties-dubai.webm"
           alt=""
         />
         <div className="bg-black bg-opacity-60 w-full h-full absolute top-0 text-center text-white flex items-center justify-center">
-          <div className="w-full absolute items-center top-0 lg:top-28">
+          <div className="w-full absolute items-center top-0 lg:top-28 lg:mt-0 mt-[20vh]">
             <h1 id="typewriter" className="mt-1 text-xl lg:text-3xl font-bold">
               Discover Luxurious Offplan Properties in Dubai
             </h1>

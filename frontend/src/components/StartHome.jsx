@@ -128,14 +128,14 @@ const StartHome = ({ id, title, description, image }) => {
   return (
     <div className=''>
       
-        <div className="w-full relative lg:mt-[0vw] sm:h-[100vh] mt-[20vw]">
+        <div className="w-full h-[70vh] relative lg:mt-[0vw] sm:h-[100vh]">
   {/* <!-- Video Background --> */}
   
   <video
     loop
     autoPlay
     muted
-    className="relative z-0 w-full h-[50vh] sm:h-full object-cover object-center"
+    className="relative z-0 w-full h-[70vh] sm:h-full object-cover object-center"
     // src="/src/assets/excel-properties-dubai.webm"
     src='/Website Content.webm' 
     type="video/webm"

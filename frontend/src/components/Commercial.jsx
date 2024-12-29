@@ -64,12 +64,12 @@ function Commercial() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full lg:h-[60vh] sm:h-[100vh]">
+      <div className="relative h-[70vh] w-full lg:h-[70vh] sm:h-[100vh]">
         <video
           loop
           autoPlay
           muted
-          className="w-full h-[50vh] sm:h-full object-cover"
+          className="w-full h-[70vh] sm:h-full object-cover"
           src="/excel-properties-dubai.webm"
           alt=""
         />
@@ -81,7 +81,27 @@ function Commercial() {
             <h4>{loading ? "Loading..." : `${commercialProperties.length} properties available`}</h4>
 
             {/* Search Bar */}
-            <div className="search-container mt-5 lg:mt-10 bg-white/30 backdrop-blur-md rounded-lg p-4 w-[90%] max-w-[800px] mx-auto shadow-md">
+            <div className="search-container mt-5 lg:mt-10 bg-white/30 backdrop-blur-md rounded-lg p-4 w-[100%] max-w-[800px] mx-auto shadow-md">
+            <div className="tabs space-x-3 lg:space-x-3 sm:justify-start gap-3 sm:gap-5 mb-5">
+                        <Link
+                          className="tab-btn text-white bg-transparent border border-gray-300 py-2 px-2 sm:px-3 text-sm sm:text-base rounded cursor-pointer transition-all hover:bg-gray-200 active:bg-black active:text-white"
+                          to="/residential-properties"
+                        >
+                          Residential
+                        </Link>
+                        <Link
+                          className="tab-btn bg-transparent border border-gray-300 py-2 px-2 sm:px-5 text-sm sm:text-base rounded cursor-pointer text-white transition-all hover:bg-gray-200 active:bg-black active:text-white"
+                          to="/commercial"
+                        >
+                          Commercial
+                        </Link>
+                        <Link
+                          className="tab-btn bg-transparent border border-gray-300 py-2 px-2 sm:px-5 text-sm sm:text-base rounded cursor-pointer text-white transition-all hover:bg-gray-200 active:bg-black active:text-white"
+                          to="/off-plan"
+                        >
+                          Off Plan
+                        </Link>
+                      </div>
               <div className="flex flex-wrap gap-3 items-center justify-center">
                 <input
                   className="w-full lg:w-1/3 px-4 py-2 border rounded bg-transparent text-white"
