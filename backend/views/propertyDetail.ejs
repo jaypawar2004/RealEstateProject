@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/download.png" />
+    <title>Property Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col items-center relative py-8 bg-white shadow-md">
+        <!-- Header -->
+        <header class="w-full max-w-5xl bg-white shadow-md rounded-lg p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">Property Details</h1>
+            <a href="/properties" class="text-blue-500 hover:underline text-lg">Back to Properties</a>
+        </header>
+
+        <!-- Property Details Card -->
+        <div class="mt-8 w-full max-w-5xl bg-white shadow-lg rounded-lg overflow-hidden p-6">
+            <!-- Main Display Image -->
+            <div class="w-full h-64 mb-6">
+                <img id="mainImage" src="/images/uploads/<%= property.Images[0] %>"
+                    alt="Property Image" 
+                    class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <!-- Thumbnail Images -->
+            <div class="flex items-center justify-center space-x-4 mb-6">
+                <img src="/images/uploads/<%= property.Images[1] %>"
+                    alt="Thumbnail 1" 
+                    class="h-24 w-24 object-cover rounded-md cursor-pointer border border-gray-300"
+                    onclick="changeMainImage('')">
+                <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200&fit=crop&q=60"
+                    alt="Thumbnail 2" 
+                    class="h-24 w-24 object-cover rounded-md cursor-pointer border border-gray-300"
+                    onclick="changeMainImage('https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=800&fit=crop&q=60')">
+            </div>
+
+            <!-- Add Image Button -->
+            <!-- <div class="flex justify-center mb-6">
+                <button onclick="triggerFileInput()" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                    Add Image
+                </button>
+                <input 
+                    id="imageInput" 
+                    type="file" 
+                    accept="image/*" 
+                    class="hidden" 
+                    onchange="previewNewImage(event)">
+            </div> -->
+
+            <!-- Property Details -->
+            <h2 id="propertyTitle" class="text-2xl font-bold text-gray-800 mb-2"><%= property.title %></h2>
+            <p id="propertyLocation" class="text-gray-600 mb-4"><%= property.location %></p>
+            <div class="flex flex-wrap gap-4 mb-4">
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 font-medium rounded-lg"><%= property.area %> sq ft</span>
+                <span class="px-4 py-2 bg-green-100 text-green-600 font-medium rounded-lg"><%= property.bedrooms %> bedrooms</span>
+                <!-- <span class="px-4 py-2 bg-yellow-100 text-yellow-600 font-medium rounded-lg">6 Bathrooms</span> -->
+            </div>
+            <p id="propertyPrice" class="text-xl font-semibold text-gray-800 mb-4"><%= property.price %> AED</p>
+
+            <!-- Editable Description -->
+            <form id="descriptionForm" action="/upload-property-desc/<%= property._id %>" method='post' class="mb-6">
+                <label for="propertyDescription" class="block text-lg font-medium text-gray-700">Description</label>
+                <textarea id="propertyDescription" name="description" rows="4"
+                    class="mt-2 block w-full p-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Add property description here..."><%= property.description %></textarea>
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-4 rounded-lg">
+                    Save Description
+                </button>
+            </form>
+
+            <!-- Edit Property Button -->
+            <button id="editPropertyBtn"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300">
+                Edit Property
+            </button>
+
+            <!-- Editable Form -->
+            <!-- <div id="formDiv" class="hidden bg-white rounded-lg shadow-md p-6 mt-6">
+                <form action="/upload-property" method="post" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label for="title" class="block text-sm font-medium text-gray-700">Property Title</label>
+                        <input id="title" type="text" name="title"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-sm font-medium text-gray-700">Property Value (AED)</label>
+                        <input id="price" type="number" name="price"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                        <input id="location" type="text" name="location"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="text-right">
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div> -->
+            <div id="formDiv" class="hidden bg-white rounded-lg shadow-md p-6 mb-6">
+                <form action="/properties/<%= property._id %>/edit" method="post" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label for="title" class="block text-sm font-medium text-gray-700">Property Title</label>
+                        <input id="title"   value="<%= property.title %>" type="text" name="title"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-sm font-medium text-gray-700">Property Value (AED)</label>
+                        <input id="price"  value="<%= property.price %>" type="number" name="price"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                        <input id="location" value="<%= property.location %>" type="text" name="location"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="mainCategory" class="block text-sm font-medium text-gray-700">Category</label>
+                        <select id="mainCategory" name="mainCategory"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                            <option id="mainCategory" value=""> select property category</option>
+                            <option value="Residential">Residential</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="OffPlan">Off Plan</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="subCategory" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select id="subCategory" name="subCategory"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                            <option id="subCategory" value="">Select SubCategory</option>
+                        </select>
+                    </div>
+                    <div class="mb-4 grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="area"  value="<%= property.area %>"  class="block text-sm font-medium text-gray-700">Area (in sqft)</label>
+                            <input id="area" type="number" name="area"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                        </div>
+                        <div>
+                            <label for="bedrooms" class="block text-sm font-medium text-gray-700"   value="<%= property.bedrooms %>">No. of Bedrooms</label>
+                            <input id="bedrooms" type="number" name="bedrooms"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="images" class="block text-sm font-medium text-gray-700" >Upload Image</label>
+                        <input id="images" type="file" name="Images"  multiple
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+                    </div>
+                    <div class="text-right">
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <button 
+        onclick="confirmDelete('<%= property._id %>')"
+        class="bg-red-500 text-white px-4 py-2 rounded-md relative bottom-16 left-[24vw] mt-4 hover:bg-red-600 focus:ring focus:ring-red-300">
+            Delete Property</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+ // Function to handle delete confirmation
+ function confirmDelete(id) {
+      const confirmed = confirm("Are you sure you want to delete this property?");
+      if (confirmed) {
+        // Redirect to the delete route
+        window.location.href = `/properties/delete/${id}`;
+      }
+    }
+
+        // Toggle Form Visibility
+        document.getElementById('editPropertyBtn').addEventListener('click', function () {
+            const formDiv = document.getElementById('formDiv');
+            formDiv.classList.toggle('hidden');
+        });
+
+        // Change the main image when a thumbnail is clicked
+        function changeMainImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+
+        // // Trigger the hidden file input
+        // function triggerFileInput() {
+        //     document.getElementById('imageInput').click();
+        // }
+
+        // // Preview the new image after selecting it
+        // function previewNewImage(event) {
+        //     const file = event.target.files[0];
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.onload = function (e) {
+        //             changeMainImage(e.target.result);
+        //         };
+        //         reader.readAsDataURL(file);
+        //     }
+        // }
+
+
+        const categories = {
+                    Residential: ["Apartment", "Bungalow"],
+                    Commercial: ["Shop", "Studio"],
+                    OffPlan: ["Palace", "Plot"],
+                };
+
+                // DOM Elements
+                const mainCategoryDropdown = document.getElementById("mainCategory");
+                const subCategoryDropdown = document.getElementById("subCategory");
+
+                // Event Listener for Main Category Change
+                mainCategoryDropdown.addEventListener("change", function () {
+                    const selectedMainCategory = this.value;
+
+                    // Clear existing sub-categories
+                    subCategoryDropdown.innerHTML = '<option value="">Select Sub Category</option>';
+
+                    // Populate Sub-Categories based on selected main category
+                    if (selectedMainCategory && categories[selectedMainCategory]) {
+                        categories[selectedMainCategory].forEach((subCategory) => {
+                            const option = document.createElement("option");
+                            option.value = subCategory;
+                            option.textContent = subCategory;
+                            subCategoryDropdown.appendChild(option);
+                        });
+                    }
+                });
+
+
+    </script>
+</body>
+</html>

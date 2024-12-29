@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8 p-10">
+        <a href="/blog-form"
+        
+        class="bg-green-500 text-white px-4 py-2 rounded-md relative mb-5 ml-5 hover:bg-green-600 focus:ring focus:ring-green-300">
+         Add Blogs
+        
+        </a>
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Latest Blogs</h1>
+
+        <!-- Dynamic Blog Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% blogs.forEach((blog) => { %>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/images/uploads/<%= blog.images[0] || 'default.jpg' %>" alt="<%= blog.title %>" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-2xl font-semibold text-gray-800"><%= blog.title %></h2>
+                        <p class="text-gray-600 mt-2"><%= blog.content.substring(0, 100) %>...</p>
+                        <a href="/blog-details/<%= blog._id %>" class="text-blue-500 hover:underline mt-4 block">Read More</a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>
