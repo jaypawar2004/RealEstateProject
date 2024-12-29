@@ -4,8 +4,9 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(async () => {
     console.log("Database connected!");
+    console.log("MongoDB URI:", process.env.MONGO_URI);
   })
-  .catch((err) => console.error("Database connection error:", err));
+  .catch((err) => console.log("MongoDB URI:", process.env.MONGO_URI));
 
 const PropertySchema = new mongoose.Schema({
   title: { type: String, required: true }, // Property title/name
