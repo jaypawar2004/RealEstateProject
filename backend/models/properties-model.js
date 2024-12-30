@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect("mongodb+srv://JayPawar:0rNK2z39c7eX864S@dbaas-db-6898794-0a550b7f.mongo.ondigitalocean.com/admin?tls=true><s=true&authSource=admin&replicaSet=dbaas-db-6898794")
   .then(async () => {
     console.log("Database connected!");
     console.log("MongoDB URI:", process.env.MONGO_URI);
