@@ -16,7 +16,7 @@ const SearchCommercial = () => {
     const fetchSearchResults = async () => {
       try {
         const response = await fetch(
-            `http://localhost:3000/api/properties/commercial/search?${searchParams.toString()}`, {
+            `http://209.38.123.194:3000/api/properties/commercial/search?${searchParams.toString()}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
