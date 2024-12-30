@@ -6,7 +6,7 @@ mongoose
     console.log("Database connected!");
     console.log("MongoDB URI:", process.env.MONGO_URI);
   })
-  .catch((err) => console.log("MongoDB URI:", process.env.MONGO_URI));
+  .catch((err) => console.error("Database connection error:", err));
 
 const PropertySchema = new mongoose.Schema({
   title: { type: String, required: true }, // Property title/name

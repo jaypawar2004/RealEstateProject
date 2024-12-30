@@ -144,7 +144,7 @@ const StartHome = ({ id, title, description, image }) => {
   {/* <!-- Overlay with Search Container --> */}
   <div className="bg-black bg-opacity-60 w-full h-full absolute top-0 text-center text-white flex items-center justify-center">
 <div className="w-full h-full flex justify-center absolute items-center -top-28 ">
-      <h1 id="typewriter" className="text-4xl font-bold">
+      <h1 id="typewriter" className="text-3xl lg:text-4xl font-bold">
         {words[index].substring(0, subIndex)}
       </h1>
     </div>
