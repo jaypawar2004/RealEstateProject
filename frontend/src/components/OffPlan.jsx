@@ -81,7 +81,7 @@ function HomePage() {
           alt=""
         />
         <div className="bg-black bg-opacity-60 w-full h-full absolute top-0 text-center text-white flex items-center justify-center">
-          <div className="w-full absolute items-center top-0 lg:top-28 lg:mt-0 mt-[0vh]">
+          <div className="w-full absolute items-center top-0 lg:top-28 lg:mt-0 mt-[10vh]">
             <h1 id="typewriter" className="mt-1 text-xl lg:text-3xl font-bold">
               Discover Luxurious Offplan Properties in Dubai
             </h1>
