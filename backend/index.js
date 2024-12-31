@@ -23,11 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 // // app.use("images/uploads/content-images", express.static(path.join(__dirname, "public/images/uploads/content-images")));
 
 app.use(cors(
-  // {
-  // origin: 'http://209.38.123.194/', // Frontend ka domain ya IP
-  // methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  // credentials: true
-// }
+  {
+  origin: 'http://209.38.123.194/', // Frontend ka domain ya IP
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}
 ));
 
 //admin register
