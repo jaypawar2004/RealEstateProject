@@ -23,24 +23,34 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/images/uploads/blogs", express.static(path.join(__dirname, "public/images/uploads/blogs")));
 // // app.use("images/uploads/content-images", express.static(path.join(__dirname, "public/images/uploads/content-images")));
 
-app.use('/api', createProxyMiddleware({
-  target: 'http://localhost:5000',  // Target your backend server
-  changeOrigin: true,               // Change the origin of the host header to match the target
-  secure: false,                    // If you're working with non-https servers (local dev)
-  pathRewrite: {
-    '^/api': '',                    // Optionally rewrite the URL path if needed
-  },
-  onProxyReq: (proxyReq, req, res) => {
-    // You can also log the requests or modify headers here if needed
-    console.log(`Proxying request to: ${proxyReq.path}`);
-  }
-}));
+// app.use('/api', createProxyMiddleware({
+//   target: 'http://localhost:5000',  // Target your backend server
+//   changeOrigin: true,               // Change the origin of the host header to match the target
+//   secure: false,                    // If you're working with non-https servers (local dev)
+//   pathRewrite: {
+//     '^/api': '',                    // Optionally rewrite the URL path if needed
+//   },
+//   onProxyReq: (proxyReq, req, res) => {
+//     // You can also log the requests or modify headers here if needed
+//     console.log(`Proxying request to: ${proxyReq.path}`);
+//   }
+// }));
+
+
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
 app.use(cors(
-  {
-  origin: 'http://209.38.123.194/', // Frontend ka domain ya IP
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}
+//   {
+//   // origin: 'http://localhost:5000', // Frontend ka domain ya IP
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true
+// }
 ));
 
 //admin register

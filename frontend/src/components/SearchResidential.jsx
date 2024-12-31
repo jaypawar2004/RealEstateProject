@@ -16,7 +16,7 @@ const SearchResidential = () => {
     const fetchSearchResults = async () => {
       try {
         const response = await fetch(
-            `http://localhost:3000/api/properties/residential/search?${searchParams.toString()}`, {
+            `http://localhost:5000/api/properties/residential/search?${searchParams.toString()}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
