@@ -14,7 +14,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/search-properties", {
+        const response = await fetch("http://localhost:5000/api/search-properties", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
