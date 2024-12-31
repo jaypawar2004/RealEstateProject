@@ -8,7 +8,8 @@ export default defineConfig({
     outDir: 'dist', // Output folder for production build
   },
   server: {
-    port: 3000, // Local development server port
+    host: '0.0.0.0',
+    port: 4000, // Local development server port
   },
   resolve: {
     alias: {
