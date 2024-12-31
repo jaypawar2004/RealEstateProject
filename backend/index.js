@@ -22,11 +22,13 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/images/uploads/blogs", express.static(path.join(__dirname, "public/images/uploads/blogs")));
 // // app.use("images/uploads/content-images", express.static(path.join(__dirname, "public/images/uploads/content-images")));
 
-app.use(cors({
-  origin: 'http://209.38.123.194/', // Frontend ka domain ya IP
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+app.use(cors(
+  // {
+  // origin: 'http://209.38.123.194/', // Frontend ka domain ya IP
+  // methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  // credentials: true
+// }
+));
 
 //admin register
 app.get('/', (req, res) => {
@@ -610,7 +612,7 @@ app.get("/blog", isLoggedIn,async(req, res) => {
  }
  
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
