@@ -39,11 +39,11 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+// });
 
 app.use(cors(
 //   {
@@ -52,7 +52,9 @@ app.use(cors(
 //   credentials: true
 // }
 ));
-
+app.get('/test', (req, res) => {
+  res.status(200).send('register');
+})
 //admin register
 app.get('/', (req, res) => {
   res.render('register');
