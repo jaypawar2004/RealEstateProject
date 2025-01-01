@@ -20,7 +20,7 @@ const StartHome = ({ id, title, description, image }) => {
 
   useEffect(() => {
     // Fetch data from the backend
-    fetch("http://localhost:5000/api/properties")
+    fetch("/api/properties")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch properties");
