@@ -8,7 +8,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/blogs"); // Update with your API URL
+        const response = await fetch("/api/blogs"); // Update with your API URL
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");
         }
