@@ -23,7 +23,6 @@ import PropertyListing from './components/PropertyListing';
 import BlogForm from './components/BlogForm';
 import { Helmet } from 'react-helmet';
 import FeedBack from './components/FeedBack';
-import Login from './components/Login';
 import Admin from './components/Admin';
 import SearchResults from './components/SearchResults';
 import SearchResidential from './components/SearchResidential';
@@ -62,7 +61,6 @@ const App = () => {
           <Route path="/blogpage" element={<BlogPage />} />
           <Route path="/blogform" element={<BlogForm />} />
           <Route path="/feed" element={<FeedBack />} />
-          <Route path="/login" element={<Login />} />
           <Route element={<Map />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/allproperties" element={<PropertyListing />} />
