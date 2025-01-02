@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/images/uploads/properties", express.static(path.join(__dirname, "public/images/uploads/properties")));
 // app.use("/images/uploads/blogs", express.static(path.join(__dirname, "public/images/uploads/blogs")));
 // // app.use("images/uploads/content-images", express.static(path.join(__dirname, "public/images/uploads/content-images")));
+const cors = require("cors");
 app.use(
   cors(
   //   {
