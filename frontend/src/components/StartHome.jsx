@@ -35,6 +35,7 @@ const StartHome = ({ id, title, description, image }) => {
         return response.json();
       })
       .then((data) => {
+        console.log('API Response:', data);
         setProperties(data); // Set data in the state
         const offPlanData = data.filter((property) => property.mainCategory === "OffPlan")
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by creation date (newest first)
