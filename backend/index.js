@@ -45,7 +45,7 @@ app.use('/api', createProxyMiddleware({
 //   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 // });
 
-const cors = require('cors');
+// const cors = require('cors');
 app.use(
   cors({
     origin: 'http://159.65.159.15', // Frontend URL
