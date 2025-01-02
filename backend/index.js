@@ -26,7 +26,7 @@ app.use(
   cors(
     {
     origin: 'http://159.65.159.15', // Frontend URL
-      cache: 'no-store',
+     
     credentials: true,              // Allow cookies
   }
       )
