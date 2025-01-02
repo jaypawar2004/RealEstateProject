@@ -32,18 +32,18 @@ app.use(
       )
 );
 
-// app.use('/api', createProxyMiddleware({
-//   target: 'http://159.65.159.15',  // Target your backend server
-//   changeOrigin: true,               // Change the origin of the host header to match the target
-//   secure: false,                    // If you're working with non-https servers (local dev)
-//   pathRewrite: {
-//     '^/api': '',                    // Optionally rewrite the URL path if needed
-//   },
-//   onProxyReq: (proxyReq, req, res) => {
-//     // You can also log the requests or modify headers here if needed
-//     console.log(`Proxying request to: ${proxyReq.path}`);
-//   }
-// }));
+app.use('/api', createProxyMiddleware({
+  target: 'http://159.65.159.15:5000',  // Target your backend server
+  changeOrigin: true,               // Change the origin of the host header to match the target
+  secure: false,                    // If you're working with non-https servers (local dev)
+  pathRewrite: {
+    '^/api': '',                    // Optionally rewrite the URL path if needed
+  },
+  onProxyReq: (proxyReq, req, res) => {
+    // You can also log the requests or modify headers here if needed
+    console.log(`Proxying request to: ${proxyReq.path}`);
+  }
+}));
 
 
 
