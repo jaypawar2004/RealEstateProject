@@ -47,7 +47,7 @@ app.use('/api', createProxyMiddleware({
 
 app.use(cors(
   {
-  origin: 'http://159.65.159.15', // Frontend ka domain ya IP
+  origin: 'http://159.65.159.15:5000', // Frontend ka domain ya IP
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
