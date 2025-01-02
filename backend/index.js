@@ -47,10 +47,12 @@ app.use('/api', createProxyMiddleware({
 
 // const cors = require('cors');
 app.use(
-  cors({
-    origin: 'http://159.65.159.15', // Frontend URL
-    credentials: true,              // Allow cookies
-  })
+  cors(
+  //   {
+  //   origin: 'http://159.65.159.15', // Frontend URL
+  //   credentials: true,              // Allow cookies
+  // }
+      )
 );
 
 app.get('/test', (req, res) => {
