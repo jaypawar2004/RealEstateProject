@@ -63,7 +63,7 @@ app.get('/test', (req, res) => {
 app.get('/', (req, res) => {
   res.render('register');
 })
-app.get('/home', isLoggedIn,async(req, res) => {
+app.get('/home',async(req, res) => {
 const properties = await propertyModel.find();
 const users = await userModel.find();
 const blogs = await Blog.find();
@@ -161,7 +161,7 @@ app.get('/logout',(req,res)=>{
 
 
 
-app.get("/properties", isLoggedIn,async (req, res) => {
+app.get("/properties" ,async (req, res) => {
   try {
     const properties = await propertyModel.find(); // Fetch all properties from the database
     res.render("properties", { properties }); // Pass data to the EJS template
@@ -205,7 +205,7 @@ app.post('/upload-property', upload.array('Images', 10), async (req, res) => {
 
 
 
-app.get('/property/:id', isLoggedIn,async (req, res) => { 
+app.get('/property/:id',async (req, res) => { 
   try {
      const property = await propertyModel.findById(req.params.id);
       res.render('propertyDetail', { property });
@@ -387,7 +387,7 @@ app.post("/api/contact-user", async (req, res) => {
 });
 
 
-app.get('/users',isLoggedIn,async (req,res)=>{
+app.get('/users',async (req,res)=>{
  const users = await userModel.find();
  console.log(users);
  res.render('users',{users})
@@ -593,7 +593,7 @@ app.post("/blog/submit", upload.array("images", 5), async (req, res) => {
 
 
 //blogs 
-app.get("/blog", isLoggedIn,async(req, res) => {
+app.get("/blog",async(req, res) => {
   const blogs = await Blog.find();
   // console.log("Fetched blogs:", blogs); // Verify the output
   res.render("blogs",{blogs})});
@@ -624,7 +624,7 @@ app.get("/blog", isLoggedIn,async(req, res) => {
 
 
 
-  function isLoggedIn(req,res,next){
+  functiogedIn(req,res,next){
     try{
  
         if(req.cookies.token === "") {res.send('please login to see this page');}
