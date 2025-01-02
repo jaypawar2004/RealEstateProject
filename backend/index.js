@@ -32,6 +32,15 @@ app.use(
   }
       )
 );
+      app.get("/api/properties", async (req, res) => {
+        try {
+          const properties = await propertyModel.find();
+          // console.log(properties)
+          res.status(200).json(properties);
+        } catch (error) {
+          res.status(500).json({ message: "Error fetching properties" });
+        }
+      });
 
 app.use('/api', createProxyMiddleware({
   target: 'http://159.65.159.15:5000',  // Target your backend server
@@ -315,15 +324,6 @@ app.post("/upload-property-desc/:id", async (req, res) => {
 
 
       //api
-      app.get("/api/properties", async (req, res) => {
-        try {
-          const properties = await propertyModel.find();
-          // console.log(properties)
-          res.status(200).json(properties);
-        } catch (error) {
-          res.status(500).json({ message: "Error fetching properties" });
-        }
-      });
       app.get("/api/properties/residential", async (req, res) => {
         try {
           const properties = await propertyModel.find({mainCategory:"Residential"});
