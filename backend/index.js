@@ -46,14 +46,14 @@ app.use('/api', createProxyMiddleware({
 // });
 
 // const cors = require('cors');
-app.use(
-  cors(
-  //   {
-  //   origin: 'http://159.65.159.15', // Frontend URL
-  //   credentials: true,              // Allow cookies
-  // }
-      )
-);
+// app.use(
+//   cors(
+//   //   {
+//   //   origin: 'http://159.65.159.15', // Frontend URL
+//   //   credentials: true,              // Allow cookies
+//   // }
+//       )
+// );
 
 app.get('/test', (req, res) => {
   res.status(200).send('register');
