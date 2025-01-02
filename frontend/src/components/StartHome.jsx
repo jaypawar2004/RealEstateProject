@@ -20,7 +20,7 @@ const StartHome = ({ id, title, description, image }) => {
 
   useEffect(() => {
     // Fetch data from the backend
-    fetch("/api/showproperties",{
+    fetch("/api/properties",{
        method: 'GET',
   headers: {
     'Cache-Control': 'no-cache'
