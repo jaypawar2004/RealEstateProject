@@ -1,5 +1,5 @@
 const express = require('express');
-// const app = express();
+const app = express();
 const path = require('path')
 const propertyModel = require('./models/properties-model');
 const userModel = require('./models/user-model')
