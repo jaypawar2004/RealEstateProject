@@ -20,7 +20,7 @@ const StartHome = ({ id, title, description, image }) => {
 
   useEffect(() => {
     // Fetch data from the backend
-    fetch("http://159.65.159.15:5000/api/showproperties",{
+    fetch("http://159.65.159.15/api/showproperties",{
        method: 'GET',
   headers: {
     'Cache-Control': 'no-cache'
