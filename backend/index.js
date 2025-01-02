@@ -45,13 +45,14 @@ app.use('/api', createProxyMiddleware({
 //   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 // });
 
-app.use(cors(
-  {
-  origin: 'http://159.65.159.15:5000', // Frontend ka domain ya IP
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}
-));
+const cors = require('cors');
+app.use(
+  cors({
+    origin: 'http://159.65.159.15', // Frontend URL
+    credentials: true,              // Allow cookies
+  })
+);
+
 app.get('/test', (req, res) => {
   res.status(200).send('register');
 })
