@@ -24,26 +24,26 @@ app.use(express.urlencoded({ extended: true }));
 // // app.use("images/uploads/content-images", express.static(path.join(__dirname, "public/images/uploads/content-images")));
 app.use(
   cors(
-    {
-    origin: 'http://159.65.159.15', // Frontend URL
+  //   {
+  //   // origin: 'http://159.65.159.15', // Frontend URL
      
-    credentials: true,              // Allow cookies
-  }
+  //   // credentials: true,              // Allow cookies
+  // }
       )
 );
 
-app.use('/api', createProxyMiddleware({
-  target: 'http://159.65.159.15',  // Target your backend server
-  changeOrigin: true,               // Change the origin of the host header to match the target
-  secure: false,                    // If you're working with non-https servers (local dev)
-  pathRewrite: {
-    '^/api': '',                    // Optionally rewrite the URL path if needed
-  },
-  onProxyReq: (proxyReq, req, res) => {
-    // You can also log the requests or modify headers here if needed
-    console.log(`Proxying request to: ${proxyReq.path}`);
-  }
-}));
+// app.use('/api', createProxyMiddleware({
+//   target: 'http://159.65.159.15',  // Target your backend server
+//   changeOrigin: true,               // Change the origin of the host header to match the target
+//   secure: false,                    // If you're working with non-https servers (local dev)
+//   pathRewrite: {
+//     '^/api': '',                    // Optionally rewrite the URL path if needed
+//   },
+//   onProxyReq: (proxyReq, req, res) => {
+//     // You can also log the requests or modify headers here if needed
+//     console.log(`Proxying request to: ${proxyReq.path}`);
+//   }
+// }));
 
 
 
