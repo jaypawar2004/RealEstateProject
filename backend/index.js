@@ -46,11 +46,11 @@ app.use('/api', createProxyMiddleware({
 // });
 
 app.use(cors(
-//   {
-//   // origin: 'http://localhost:5000', // Frontend ka domain ya IP
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true
-// }
+  {
+  origin: 'http://159.65.159.15', // Frontend ka domain ya IP
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}
 ));
 app.get('/test', (req, res) => {
   res.status(200).send('register');
