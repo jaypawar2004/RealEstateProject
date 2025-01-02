@@ -25,11 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 // const cors = require("cors");
 app.use(
   cors(
-  //   {
-  //   // origin: 'http://159.65.159.15', // Frontend URL
+    {
+    origin: 'http://159.65.159.15', // Frontend URL
      
-  //   // credentials: true,              // Allow cookies
-  // }
+    credentials: true,              // Allow cookies
+  }
       )
 );
 
@@ -38,7 +38,7 @@ app.use('/api', createProxyMiddleware({
   changeOrigin: true,               // Change the origin of the host header to match the target
   secure: false,                    // If you're working with non-https servers (local dev)
   pathRewrite: {
-    '^/api': '',                    // Optionally rewrite the URL path if needed
+    // '^/api': '',                    // Optionally rewrite the URL path if needed
   },
   onProxyReq: (proxyReq, req, res) => {
     // You can also log the requests or modify headers here if needed
