@@ -315,7 +315,7 @@ app.post("/upload-property-desc/:id", async (req, res) => {
 
 
       //api
-      app.get("/api/showproperties", async (req, res) => {
+      app.get("/api/properties", async (req, res) => {
         try {
           const properties = await propertyModel.find();
           // console.log(properties)
