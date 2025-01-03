@@ -42,7 +42,7 @@ app.use(
         }
       });
 
-app.use('/ejs', createProxyMiddleware({
+app.use('/api', createProxyMiddleware({
   target: 'http://159.65.159.15:5000',  // Target your backend server
   changeOrigin: true,               // Change the origin of the host header to match the target
   secure: false,                    // If you're working with non-https servers (local dev)
