@@ -223,7 +223,7 @@ const Admin = () => {
           <h2 className="text-lg md:text-2xl font-bold mb-4">Add Property</h2>
 
           <div className="mb-4">
-            <label className="block mb-2">Property Title</label>
+            <label className="block mb-2">Property Titles</label>
             <input
               type="text"
               name="title"
