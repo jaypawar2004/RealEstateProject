@@ -85,7 +85,7 @@ const Login = () => {
                   Login
                 </button>
 <a href="#">
-<h2 className='text-blue-300 mt-5'>Forgot password... ?</h2>
+<h2 className='text-blue-300 mt-5'>Forgot password...?</h2>
 </a>
               </form>
             )}
