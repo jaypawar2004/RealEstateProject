@@ -8,6 +8,7 @@ const TestBlogForm = () => {
   };
 
   return (
+    // Blog form
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Test Blog Form</h1>
       <BlogForm onAddBlog={handleAddBlog} />
